@@ -7,9 +7,9 @@
 with lib; let
   inherit (pkgs.stdenv.hostPlatform) system;
   cfg = config.player;
-  playerVolMPD = pkgs.callPackage ../../Packages/playerVolMPD.nix {inherit system;};
-  playerVolMpris = pkgs.callPackage ../../Packages/playerVolMpris.nix {inherit system;};
-  playerVolDefault_Sink = pkgs.callPackage ../../Packages/playerVolDefault_Sink.nix {inherit system;};
+  playerVolMPD = pkgs.callPackage ../../../Packages/playerVolMPD.nix {inherit system;};
+  playerVolMpris = pkgs.callPackage ../../../Packages/playerVolMpris.nix {inherit system;};
+  playerVolDefault_Sink = pkgs.callPackage ../../../Packages/playerVolDefault_Sink.nix {inherit system;};
 in {
   options.player = {
     enable = mkEnableOption "Enable playerVol script";
