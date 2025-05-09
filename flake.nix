@@ -33,8 +33,8 @@
     );
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
-    homeManagerModules = rec {
-      default = import ./Modules/Home/.;
+    homeManagerModules = {
+      default = import ./Modules/Home self;
     };
   };
 }
