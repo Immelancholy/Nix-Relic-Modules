@@ -5,7 +5,7 @@
   ...
 }:
 with lib; let
-  inherit (pkgs.stdenv.hostPlatform) system self;
+  inherit (pkgs.stdenv.hostPlatform) system;
   cfg = config.player;
   playerVolMPD = self.packages.${system}.playerVolMPD;
   playerVolMpris = self.packages.${system}.playerVolMpris;
