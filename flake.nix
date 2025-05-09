@@ -35,9 +35,7 @@
 
     homeManagerModules = rec {
       all = import ./Modules/Home;
-      default = all {
-        inherit self;
-      };
+      default = all;
     };
   };
 }

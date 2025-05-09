@@ -1,11 +1,11 @@
-self: {
+{
   config,
   lib,
   pkgs,
   ...
 }:
 with lib; let
-  inherit (pkgs.stdenv.hostPlatform) system;
+  inherit (pkgs.stdenv.hostPlatform) system self;
   cfg = config.player;
   playerVolMPD = self.packages.${system}.playerVolMPD;
   playerVolMpris = self.packages.${system}.playerVolMpris;
