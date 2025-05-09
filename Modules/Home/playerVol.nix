@@ -1,4 +1,4 @@
-self: {
+{
   config,
   lib,
   pkgs,
@@ -7,9 +7,9 @@ self: {
 with lib; let
   inherit (pkgs.stdenv.hostPlatform) system;
   cfg = config.player;
-  playerVolMPD = self.packages.${system}.playerVolMPD;
-  playerVolMpris = self.packages.${system}.playerVolMpris;
-  playerVolDefault_Sink = self.packages.${system}.playerVolDefault_Sink;
+  playerVolMPD = pkgs.callPackage ../../Packages/playerVolMPD.nix {inherit system;};
+  playerVolMpris = pkgs.callPackage ../../Packages/playerVolMpris.nix {inherit system;};
+  playerVolDefault_Sink = pkgs.callPackage ../../Packages/playerVolDefault_Sink.nix {inherit system;};
 in {
   options.player = {
     name = mkOption {
