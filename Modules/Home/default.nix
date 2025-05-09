@@ -1,6 +1,5 @@
 {
   imports = [
     ./stylix
-    ./playerVol.nix
   ];
 }
