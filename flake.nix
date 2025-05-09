@@ -33,6 +33,11 @@
     );
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
-    homeManagerModules.default = import ./Modules/Home/default.nix self;
+    homeManagerModules.default = {
+      inherit self;
+      imports = [
+        ./Modules/Home/default
+      ];
+    };
   };
 }
