@@ -34,9 +34,7 @@
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
     homeManagerModules = rec {
-      playerVol = import ./Modules/Home/playerVol.nix self;
-      zenTarget = import ./Modules/Home/stylix/zenTarget.nix;
-      default = playerVol zenTarget;
+      default = import ./Modules/Home/.;
     };
   };
 }
