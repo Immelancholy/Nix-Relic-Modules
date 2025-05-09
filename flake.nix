@@ -36,7 +36,7 @@
     homeManagerModules.default = {
       inherit self;
       imports = [
-        ./Modules/Home/default
+        ./Modules/Home
       ];
     };
   };
