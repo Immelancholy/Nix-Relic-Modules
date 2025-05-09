@@ -12,7 +12,7 @@ with lib; let
   playerVolDefault_Sink = pkgs.callPackage ../../Packages/playerVolDefault_Sink.nix {inherit system;};
 in {
   options.player = {
-    enable = true;
+    enable = mkEnableOption "Enable playerVol script";
     name = mkOption {
       type = types.str;
       default = "mpd";
