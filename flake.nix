@@ -33,9 +33,6 @@
     );
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
-    homeManagerModules = rec {
-      nix-relic = ./Modules/Home;
-      default = nix-relic self;
-    };
+    homeManagerModules.default = import ./Modules/Home/playerVol.nix self;
   };
 }
