@@ -34,10 +34,9 @@
     );
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
-    homeManagerModules = let
+    homeManagerModules = rec {
       inherit self;
-    in rec {
-      all = import ./Modules/Home ++ self;
+      all = import ./Modules/Home;
       default = all;
     };
   };
