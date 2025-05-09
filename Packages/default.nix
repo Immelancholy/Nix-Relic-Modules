@@ -1,0 +1,20 @@
+{
+  imports = [
+    ./btop.nix
+    ./cava.nix
+    ./checkshell.nix
+    ./cliphist.nix
+    ./neo.nix
+    ./tmux_dev.nix
+    ./tmux_nix.nix
+    ./tmux_notes.nix
+    ./ss.nix
+    ./toggle-mute.nix
+    ./cavaCfg.nix
+    ./brightness.nix
+    ./colortrans.nix
+    ./neo-color-cfg.nix
+    ./waycava.nix
+    ./rofi-power-menu.nix
+  ];
+}
