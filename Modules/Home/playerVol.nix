@@ -10,7 +10,6 @@ with lib; let
   playerVolMPD = self.packages.${system}.playerVolMPD;
   playerVolMpris = self.packages.${system}.playerVolMpris;
   playerVolDefault_Sink = self.packages.${system}.playerVolDefault_Sink;
-  hyprgame = self.packages.${system}.hyprgame;
 in {
   options.player = {
     name = mkOption {
