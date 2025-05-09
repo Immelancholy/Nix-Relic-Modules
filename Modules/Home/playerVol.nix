@@ -45,13 +45,6 @@ in {
           ''$mods, U, exec, [workspace 1 silent; float; size 858 559; move 640 40] ${cfg.cmd}''
         ];
       };
-      home.packages = [
-        (hyprgame.override {
-          player = cfg.cmd;
-          pclass = cfg.class;
-          wallpaper = config.wayland.windowManager.hyprland.liveWallpaper.path;
-        })
-      ];
     }
     (mkIf (config.player.name == "mpd" && ! config.player.scriptUseDefaultSink) {
       home.packages = [
