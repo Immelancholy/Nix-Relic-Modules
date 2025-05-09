@@ -33,11 +33,9 @@
     );
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
-    homeManagerModules.default = {
-      inherit self;
-      imports = [
-        ./Modules/Home
-      ];
+    homeManagerModules = rec {
+      nix-relic = ./Modules/Home;
+      default = nix-relic;
     };
   };
 }
