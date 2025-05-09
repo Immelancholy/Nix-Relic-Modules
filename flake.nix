@@ -34,9 +34,10 @@
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
     homeManagerModules = rec {
-      playerVol = import ./Modules/Home/playerVol.nix self;
       all = import ./Modules/Home;
-      default = all;
+      default = all {
+        inherit self;
+      };
     };
   };
 }
