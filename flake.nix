@@ -35,7 +35,7 @@
 
     homeManagerModules = rec {
       nix-relic = ./Modules/Home;
-      default = nix-relic;
+      default = nix-relic self;
     };
   };
 }
