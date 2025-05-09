@@ -37,6 +37,17 @@
     homeManagerModules = rec {
       all = import ./Modules/Home;
       default = all;
+      programs = {
+        playerVol = import ./Modules/Home/programs/playerVol.nix;
+        nixvim = import ./Modules/Home/programs/nixvim;
+        zen = import ./Modules/Home/programs/zen;
+        default = import ./Modules/Home/programs;
+      };
+      catppuccin = import ./Modules/Home/catppuccin;
+      stylix = import ./Modules/Home/stylix;
+      hyprlandLayouts = import ./Modules/Home/wayland/windowManager/hyprland/layouts;
+      hyprLiveWallpaper = import ./Modules/Home/wayland/windowManager/hyprland/useLiveWallpaper.nix;
+      hyprPlugins = import ./Modules/Home/wayland/windowManager/hyprland/plugins;
     };
   };
 }

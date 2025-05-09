@@ -12,6 +12,7 @@ with lib; let
   playerVolDefault_Sink = pkgs.callPackage ../../Packages/playerVolDefault_Sink.nix {inherit system;};
 in {
   options.player = {
+    enable = true;
     name = mkOption {
       type = types.str;
       default = "mpd";
@@ -34,7 +35,7 @@ in {
     };
   };
   config = mkMerge [
-    {
+    (mkIf (config.wayland.windowManager.hyprland.enable && cfg.enable) {
       wayland.windowManager.hyprland.settings = {
         "$player" = "${cfg.name}";
         exec-once = [
@@ -44,20 +45,20 @@ in {
           ''$mods, U, exec, [workspace 1 silent; float; size 858 559; move 640 40] ${cfg.cmd}''
         ];
       };
-    }
-    (mkIf (config.player.name == "mpd" && ! config.player.scriptUseDefaultSink) {
+    })
+    (mkIf (cfg.enable && config.player.name == "mpd" && ! config.player.scriptUseDefaultSink) {
       home.packages = [
         playerVolMPD
       ];
     })
-    (mkIf (config.player.name != "mpd" && ! config.player.scriptUseDefaultSink) {
+    (mkIf (cfg.enable && config.player.name != "mpd" && ! config.player.scriptUseDefaultSink) {
       home.packages = [
         (playerVolMpris.override {
           player = cfg.name;
         })
       ];
     })
-    (mkIf config.player.scriptUseDefaultSink {
+    (mkIf (cfg.enable && config.player.scriptUseDefaultSink) {
       home.packages = [
         playerVolDefault_Sink
       ];
