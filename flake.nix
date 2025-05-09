@@ -36,7 +36,7 @@
     homeManagerModules = rec {
       playerVol = import ./Modules/Home/playerVol.nix self;
       all = import ./Modules/Home;
-      default = all self;
+      default = all;
     };
   };
 }
