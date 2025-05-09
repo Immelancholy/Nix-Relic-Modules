@@ -11,7 +11,6 @@
     ...
   }: let
     inherit nixpkgs;
-    inherit self;
     systems = [
       "x86_64-linux"
       "aarch64-linux"
@@ -35,8 +34,10 @@
     );
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
-    homeManagerModules = rec {
-      all = import ./Modules/Home self;
+    homeManagerModules = let
+      inherit self;
+    in rec {
+      all = import ./Modules/Home ++ self;
       default = all;
     };
   };
