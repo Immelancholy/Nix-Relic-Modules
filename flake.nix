@@ -29,6 +29,9 @@
         playerVolDefault_Sink = pkgs.callPackage ./Packages/playerVolDefault_Sink.nix {
           inherit system;
         };
+        hyprgame = pkgs.callPackage ./Packages/hyprgame.nix {
+          inherit system;
+        };
       }
     );
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);

@@ -1,5 +1,6 @@
 {
   imports = [
     ./playerVol.nix
+    ./wayland
   ];
 }
