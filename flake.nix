@@ -34,8 +34,7 @@
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
     homeManagerModules = {
-      inherit self;
-      default = import ./Modules/Home;
+      default = import ./Modules/Home {inherit self;};
     };
   };
 }
