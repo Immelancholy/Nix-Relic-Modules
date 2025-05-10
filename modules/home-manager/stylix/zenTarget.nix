@@ -11,7 +11,6 @@
   surface1 = "#${config.lib.stylix.colors.base03}BB";
   surface2 = "#${config.lib.stylix.colors.base04}BB";
   text = "#${config.lib.stylix.colors.base05}BB";
-  rosewater = "#${config.lib.stylix.colors.base06}BB";
   lavender = "#${config.lib.stylix.colors.base07}BB";
   red = "#${config.lib.stylix.colors.base08}BB";
   peach = "#${config.lib.stylix.colors.base09}BB";
