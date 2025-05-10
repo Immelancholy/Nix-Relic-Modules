@@ -245,12 +245,12 @@ in {
           submap = reset
         '';
       }
-      (mkIf cfg.usingFlake {
+      (mkIf config.wayland.windowManager.hyprland.usingFlake {
         plugins = [
           inputs.hy3.packages.${pkgs.system}.hy3
         ];
       })
-      (mkIf (! cfg.usingFlake) {
+      (mkIf (! config.wayland.windowManager.hyprland.usingFlake) {
         plugins = [
           pkgs.hyprlandPlugins.hy3
         ];
