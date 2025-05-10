@@ -132,8 +132,9 @@ HELP
         ;;
     esac
 
-		# Find object.serial of virtual cable
-		id=$(wpctl status | grep "virtual_cable_in" | awk '{print $2}' | grep -m1 "" | cut -f1 -d ".")
+		# Find object.serial of cava device 
+		cava_device=${CAVA_DEVICE:-"virtual_cable_in"}
+		id=$(wpctl status | grep "${cava_device}" | awk '{print $2}' | grep -m1 "" | cut -f1 -d ".")
 		serial=$(wpctl inspect "${id}" | sed -n 's/.*object.serial = //p')
 		# serial=$(echo "${serial}" | tr -d '\"')
     # Calculate the length of the bar outside the loop
