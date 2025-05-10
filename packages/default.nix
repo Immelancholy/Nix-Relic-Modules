@@ -3,10 +3,12 @@
     ./brightness.nix
     ./btop.nix
     ./cava.nix
+    ./cavaCfg.nix
     ./checkshell.nix
     ./cliphist.nix
     ./colortrans.nix
     ./mpdchck.nix
+    ./neo-color.nix
     ./neo.nix
     ./rofi-power-menu.nix
     ./ss.nix

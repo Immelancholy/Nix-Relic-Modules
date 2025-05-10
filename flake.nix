@@ -21,60 +21,27 @@
       system: let
         pkgs = import nixpkgs {inherit system;};
       in {
-        brightness = pkgs.callPackage ./packages/brightness.nix {
-          inherit system;
-        };
-        btop = pkgs.callPackage ./packages/btop.nix {
-          inherit system;
-        };
-        cava = pkgs.callPackage ./packages/cava.nix {
-          inherit system;
-        };
-        checkshell = pkgs.callPackage ./packages/checkshell.nix {
-          inherit system;
-        };
-        cliphist = pkgs.callPackage ./packages/cliphist.nix {
-          inherit system;
-        };
-        colortrans = pkgs.callPackage ./packages/colortrans.nix {
-          inherit system;
-        };
-        mpdchck = pkgs.callPackage ./packages/mpdchck.nix {
-          inherit system;
-        };
-        neo = pkgs.callPackage ./packages/neo.nix {
-          inherit system;
-        };
-        playerVolMPD = pkgs.callPackage ./packages/playerVolMPD.nix {
-          inherit system;
-        };
-        playerVolMpris = pkgs.callPackage ./packages/playerVolMpris.nix {
-          inherit system;
-        };
-        playerVolDefault_Sink = pkgs.callPackage ./packages/playerVolDefault_Sink.nix {
-          inherit system;
-        };
-        rofi-power-menu = pkgs.callPackage ./packages/rofi-power-menu.nix {
-          inherit system;
-        };
-        ss = pkgs.callPackage ./packages/ss.nix {
-          inherit system;
-        };
-        tmux_dev = pkgs.callPackage ./packages/tmux_dev.nix {
-          inherit system;
-        };
-        tmux_nix = pkgs.callPackage ./packages/tmux_nix.nix {
-          inherit system;
-        };
-        tmux_notes = pkgs.callPackage ./packages/tmux_notes.nix {
-          inherit system;
-        };
-        toggle-mute = pkgs.callPackage ./packages/toggle-mute.nix {
-          inherit system;
-        };
-        waycava = pkgs.callPackage ./packages/waycava.nix {
-          inherit system;
-        };
+        brightness = pkgs.callPackage ./packages/brightness.nix {};
+        btop = pkgs.callPackage ./packages/btop.nix {};
+        cava = pkgs.callPackage ./packages/cava.nix {};
+        cavaCfg = pkgs.callPackage ./packages/cavaCfg.nix {};
+        checkshell = pkgs.callPackage ./packages/checkshell.nix {};
+        cliphist = pkgs.callPackage ./packages/cliphist.nix {};
+        colortrans = pkgs.callPackage ./packages/colortrans.nix {};
+        mpdchck = pkgs.callPackage ./packages/mpdchck.nix {};
+        neo-color = pkgs.callPackage ./packages/neo-color.nix {};
+        neo = pkgs.callPackage ./packages/neo.nix {};
+        playerVolMPD = pkgs.callPackage ./packages/playerVolMPD.nix {};
+        playerVolMpris = pkgs.callPackage ./packages/playerVolMpris.nix {};
+        playerVolDefault_Sink = pkgs.callPackage ./packages/playerVolDefault_Sink.nix {};
+        rofi-power-menu = pkgs.callPackage ./packages/rofi-power-menu.nix {};
+        ss = pkgs.callPackage ./packages/ss.nix {};
+        tmux_dev = pkgs.callPackage ./packages/tmux_dev.nix {};
+        tmux_nix = pkgs.callPackage ./packages/tmux_nix.nix {};
+        tmux_notes = pkgs.callPackage ./packages/tmux_notes.nix {};
+        toggle-mute = pkgs.callPackage ./packages/toggle-mute.nix {};
+        waycava = pkgs.callPackage ./packages/waycava.nix {};
+        default = pkgs.callPackages ./packages;
       }
     );
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
