@@ -28,6 +28,7 @@
         checkshell = pkgs.callPackage ./packages/checkshell.nix {};
         cliphist = pkgs.callPackage ./packages/cliphist.nix {};
         colortrans = pkgs.callPackage ./packages/colortrans.nix {};
+        hyprgame = pkgs.callPackage ./packages/hyprgame.nix {};
         mpdchck = pkgs.callPackage ./packages/mpdchck.nix {};
         neo-color = pkgs.callPackage ./packages/neo-color.nix {};
         neo = pkgs.callPackage ./packages/neo.nix {};
