@@ -6,6 +6,7 @@
 }:
 with lib; let
   cfg = config.services.mpdchck;
+  mpdchck = pkgs.callPackage ../../../Packages/mpdchck.nix;
 in {
   options.services.mpdchck = {
     enable = mkEnableOption "Enable mpdchck service";
@@ -27,7 +28,7 @@ in {
       after = ["mpd.service"];
       wantedBy = ["default.target"];
       path = [
-        (pkgs.callPackage ../../../Packages/mpdchck.nix)
+        mpdchck
         pkgs.pipewire
         pkgs.mpc
       ];
