@@ -1,11 +1,11 @@
 {
   writeShellApplication,
   pkgs,
-  text ? "e8e1e1",
-  teal ? "ae8795",
-  blue ? "a585bc",
-  mauve ? "c970ca",
-  flamingo ? "9181eb",
+  color1 ? "",
+  color2 ? "",
+  color3 ? "",
+  color4 ? "",
+  color5 ? "",
   ...
 }: let
   colortrans = pkgs.callPackage ./colortrans.nix {};
@@ -21,11 +21,11 @@ in
       neoDir="$XDG_CONFIG_HOME/neo"
       neoColorFile="$neoDir/colors"
 
-      text=$(colortrans ${text} | sed -n '2p' | awk '{print $8}')
-      teal=$(colortrans ${teal} | sed -n '2p' | awk '{print $8}')
-      blue=$(colortrans ${blue} | sed -n '2p' | awk '{print $8}')
-      mauve=$(colortrans ${mauve} | sed -n '2p' | awk '{print $8}')
-      flamingo=$(colortrans ${flamingo} | sed -n '2p' | awk '{print $8}')
+      color1=$(colortrans ${color1} | sed -n '2p' | awk '{print $8}')
+      color2=$(colortrans ${color2} | sed -n '2p' | awk '{print $8}')
+      color3=$(colortrans ${color3} | sed -n '2p' | awk '{print $8}')
+      color4=$(colortrans ${color4} | sed -n '2p' | awk '{print $8}')
+      color5=$(colortrans ${color5} | sed -n '2p' | awk '{print $8}')
 
       if [ ! -d "$neoDir" ]; then
         echo "Making Neo Directory"
@@ -35,11 +35,11 @@ in
       cat >"$neoColorFile" <<EOF
         neo_color_version 1
         -1
-        ''${flamingo:11}
-        ''${blue:11}
-        ''${mauve:11}
-        ''${teal:11}
-        ''${text:11}
+        ''${color1:11}
+        ''${color2:11}
+        ''${color3:11}
+        ''${color4:11}
+        ''${color5:11}
       EOF
     '';
   }

@@ -4,19 +4,51 @@
   lib,
   ...
 }: let
-  cavaCfg = pkgs.callPackage ../../../packages/cavaCfg.nix {
-    red = "#${config.lib.stylix.colors.base08}";
-    peach = "#${config.lib.stylix.colors.base09}";
-    yellow = "#${config.lib.stylix.colors.base0A}";
-    green = "#${config.lib.stylix.colors.base0B}";
-    teal = "#${config.lib.stylix.colors.base0C}";
-    blue = "#${config.lib.stylix.colors.base0D}";
-    mauve = "#${config.lib.stylix.colors.base0E}";
-  };
-
   cfg = config.services.cavaCfg;
+
+  cavaCfg = pkgs.callPackage ../../../packages/cavaCfg.nix {
+    color1 = cfg.colors.color1;
+    color2 = cfg.colors.color2;
+    color3 = cfg.colors.color3;
+    color4 = cfg.colors.color4;
+    color5 = cfg.colors.color5;
+    color6 = cfg.colors.color6;
+    color7 = cfg.colors.color7;
+  };
 in {
-  options.services.cavaCfg.enable = lib.mkEnableOption "Enable neo color file generation service";
+  options.services.cavaCfg = {
+    enable = lib.mkEnableOption "Enable neo color file generation service";
+    colors = {
+      color1 = lib.mkOption {
+        type = lib.types.str;
+        default = "";
+      };
+      color2 = lib.mkOption {
+        type = lib.types.str;
+        default = "";
+      };
+      color3 = lib.mkOption {
+        type = lib.types.str;
+        default = "";
+      };
+      color4 = lib.mkOption {
+        type = lib.types.str;
+        default = "";
+      };
+      color5 = lib.mkOption {
+        type = lib.types.str;
+        default = "";
+      };
+      color6 = lib.mkOption {
+        type = lib.types.str;
+        default = "";
+      };
+      color7 = lib.mkOption {
+        type = lib.types.str;
+        default = "";
+      };
+    };
+  };
 
   config = lib.mkIf cfg.enable {
     systemd.user.services."cavaCfg" = {

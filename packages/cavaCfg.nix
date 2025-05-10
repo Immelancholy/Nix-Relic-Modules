@@ -1,13 +1,13 @@
 {
   writeShellScriptBin,
   pkgs,
-  red ? "",
-  peach ? "",
-  yellow ? "",
-  green ? "",
-  teal ? "",
-  blue ? "",
-  mauve ? "",
+  color1 ? "",
+  color2 ? "",
+  color3 ? "",
+  color4 ? "",
+  color5 ? "",
+  color6 ? "",
+  color7 ? "",
   ...
 }:
 writeShellScriptBin "cavaCfg" ''
@@ -23,13 +23,13 @@ writeShellScriptBin "cavaCfg" ''
   cat >"$cavaConfigFile" <<EOF
   [color]
   gradient=1
-  gradient_color_1='${mauve}'
-  gradient_color_2='${blue}'
-  gradient_color_3='${teal}'
-  gradient_color_4='${green}'
-  gradient_color_5='${yellow}'
-  gradient_color_6='${peach}'
-  gradient_color_7='${red}'
+  gradient_color_1='${color1}'
+  gradient_color_2='${color2}'
+  gradient_color_3='${color3}'
+  gradient_color_4='${color4}'
+  gradient_color_5='${color5}'
+  gradient_color_6='${color6}'
+  gradient_color_7='${color7}'
 
   [general]
   bar_spacing=0
