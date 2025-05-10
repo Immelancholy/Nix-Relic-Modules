@@ -8,11 +8,6 @@ with lib; let
   inherit (pkgs.stdenv.hostPlatform) system;
   cfg = config.services.mpdchck;
 in {
-  overlays = [
-    (final: prev: {
-      mpdchck = final.callPackage ../../../Packages/mpdchck.nix;
-    })
-  ];
   options.services.mpdchck = {
     enable = mkEnableOption "Enable mpdchck service";
     address = mkOption {
@@ -27,6 +22,11 @@ in {
     };
   };
   config = mkIf cfg.enable {
+    overlays = [
+      (final: prev: {
+        mpdchck = final.callPackage ../../../Packages/mpdchck.nix;
+      })
+    ];
     systemd.user.services."mpdchck" = {
       enable = true;
       name = "mpdchck";
