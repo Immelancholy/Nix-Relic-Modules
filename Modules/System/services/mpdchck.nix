@@ -24,7 +24,7 @@ in {
   config = mkIf cfg.enable {
     nixpkgs.overlays = [
       (final: prev: {
-        mpdchck = final.callPackage ../../../Packages/mpdchck.nix;
+        mpdchck = prev.callPackage ../../../Packages/mpdchck.nix;
       })
     ];
     systemd.user.services."mpdchck" = {
