@@ -21,7 +21,7 @@
   mauve = "${config.lib.stylix.colors.base0E}";
   flamingo = "${config.lib.stylix.colors.base0F}";
 
-  colortransform = pkgs.callPackage ../../../packages/colortrans.nix;
+  colortransform = pkgs.callPackage ../../../packages/colortrans.nix {};
 
   neo-color = pkgs.writeShellScriptBin "neo-color" ''
     neoDir="$XDG_CONFIG_HOME/neo"
@@ -68,7 +68,7 @@ in {
       name = "Neo Color";
       wantedBy = ["default.target"];
       path = [
-        "${colortransform}"
+        colortransform
         neo-color
       ];
       script = ''neo-color'';
