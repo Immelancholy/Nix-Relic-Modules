@@ -7,8 +7,12 @@
 with lib; let
   inherit (pkgs.stdenv.hostPlatform) system;
   cfg = config.services.mpdchck;
-  mpdchck = pkgs.callPackage ../../../Packages/mpdchck.nix;
 in {
+  overlays = [
+    (final: prev: {
+      mpdchck = final.callPackage ../../../Packages/mpdchck.nix;
+    })
+  ];
   options.services.mpdchck = {
     enable = mkEnableOption "Enable mpdchck service";
     address = mkOption {
@@ -29,6 +33,7 @@ in {
       after = ["mpd.service"];
       wantedBy = ["default.target"];
       path = [
+        pkgs.mpdchck
         pkgs.pipewire
         pkgs.mpc
       ];
