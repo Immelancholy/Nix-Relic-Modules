@@ -22,7 +22,7 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    overlays = [
+    nixpkgs.overlays = [
       (final: prev: {
         mpdchck = final.callPackage ../../../Packages/mpdchck.nix;
       })
