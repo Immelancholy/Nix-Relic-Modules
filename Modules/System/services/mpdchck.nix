@@ -7,6 +7,7 @@
 with lib; let
   inherit (pkgs.stdenv.hostPlatform) system;
   cfg = config.services.mpdchck;
+  mpdchck = prev.callPackage ../../../Packages/mpdchck.nix {};
 in {
   options.services.mpdchck = {
     enable = mkEnableOption "Enable mpdchck service";
@@ -22,22 +23,16 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    nixpkgs.overlays = [
-      (final: prev: {
-        mpdchck = prev.callPackage ../../../Packages/mpdchck.nix;
-      })
-    ];
     systemd.user.services."mpdchck" = {
       enable = true;
       name = "mpdchck";
       after = ["mpd.service"];
       wantedBy = ["default.target"];
       path = [
-        pkgs.mpdchck
         pkgs.pipewire
         pkgs.mpc
       ];
-      script = ''mpdchck.sh'';
+      script = ''${mpdchck}/bin/mpdchck.sh'';
       serviceConfig = {
         Restart = "always";
       };
