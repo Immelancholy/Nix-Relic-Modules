@@ -37,7 +37,7 @@ in {
         pkgs.pipewire
         pkgs.mpc
       ];
-      script = ''${mpdchck}/bin/mpdchck.sh'';
+      script = ''mpdchck.sh'';
       serviceConfig = {
         Restart = "always";
       };
