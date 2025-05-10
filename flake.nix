@@ -75,7 +75,6 @@
         waycava = pkgs.callPackage ./packages/waycava.nix {
           inherit system;
         };
-        default = pkgs.callPackages ./packages;
       }
     );
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
