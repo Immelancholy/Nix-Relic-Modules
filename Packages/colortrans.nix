@@ -1,5 +1,5 @@
-{writePython3Bin, ...}:
-writePython3Bin "colortrans" {
+{writers, ...}:
+writers.writePython3Bin "colortrans" {
   doCheck = false;
 }
 ''
