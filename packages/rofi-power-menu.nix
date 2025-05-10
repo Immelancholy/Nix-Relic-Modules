@@ -1,1 +1,13 @@
-{writeShellScriptBin, ...}: writeShellScriptBin "rofi-power-menu" (builtins.readFile ./Bash/rofi-power-menu)
+{
+  writeShellApplication,
+  pkgs,
+  rofiPackage ? pkgs.rofi-wayland,
+  ...
+}:
+writeShellApplication {
+  name = "rofi-power-menu";
+  runtimeInputs = [
+    rofiPackage
+  ];
+  text = builtins.readFile ./Bash/rofi-power-menu;
+}
