@@ -1,13 +1,5 @@
 {writeShellScriptBin, ...}:
 writeShellScriptBin "mpdchck.sh" ''
-  while :
-  do
-    state=$(mpc status %state%)
-    if [ "$state" = "playing" ];
-    then
-      sr
-    fi
-  done
   sr () {
     pwrate=$(pw-metadata -n settings | grep 'clock.force-rate' | cut -d "'" -f 4)
     mapfile -t allowedRates < <( pw-metadata -n settings | grep 'clock.allowed-rates' | cut -d "'" -f 4 | tr -d "[" | tr -d "]" | tr -d , )
@@ -75,4 +67,12 @@ writeShellScriptBin "mpdchck.sh" ''
 
     done
   }
+  while :
+  do
+    state=$(mpc status %state%)
+    if [ "$state" = "playing" ];
+    then
+      sr
+    fi
+  done
 ''
