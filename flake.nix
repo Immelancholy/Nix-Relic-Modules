@@ -21,83 +21,84 @@
       system: let
         pkgs = import nixpkgs {inherit system;};
       in {
-        brightness = pkgs.callPackage ./Packages/brightness.nix {
+        brightness = pkgs.callPackage ./packages/brightness.nix {
           inherit system;
         };
-        btop = pkgs.callPackage ./Packages/btop.nix {
+        btop = pkgs.callPackage ./packages/btop.nix {
           inherit system;
         };
-        cava = pkgs.callPackage ./Packages/cava.nix {
+        cava = pkgs.callPackage ./packages/cava.nix {
           inherit system;
         };
-        checkshell = pkgs.callPackage ./Packages/checkshell.nix {
+        checkshell = pkgs.callPackage ./packages/checkshell.nix {
           inherit system;
         };
-        cliphist = pkgs.callPackage ./Packages/cliphist.nix {
+        cliphist = pkgs.callPackage ./packages/cliphist.nix {
           inherit system;
         };
-        colortrans = pkgs.callPackage ./Packages/colortrans.nix {
+        colortrans = pkgs.callPackage ./packages/colortrans.nix {
           inherit system;
         };
-        mpdchck = pkgs.callPackage ./Packages/mpdchck.nix {
+        mpdchck = pkgs.callPackage ./packages/mpdchck.nix {
           inherit system;
         };
-        neo = pkgs.callPackage ./Packages/neo.nix {
+        neo = pkgs.callPackage ./packages/neo.nix {
           inherit system;
         };
-        playerVolMPD = pkgs.callPackage ./Packages/playerVolMPD.nix {
+        playerVolMPD = pkgs.callPackage ./packages/playerVolMPD.nix {
           inherit system;
         };
-        playerVolMpris = pkgs.callPackage ./Packages/playerVolMpris.nix {
+        playerVolMpris = pkgs.callPackage ./packages/playerVolMpris.nix {
           inherit system;
         };
-        playerVolDefault_Sink = pkgs.callPackage ./Packages/playerVolDefault_Sink.nix {
+        playerVolDefault_Sink = pkgs.callPackage ./packages/playerVolDefault_Sink.nix {
           inherit system;
         };
-        rofi-power-menu = pkgs.callPackage ./Packages/rofi-power-menu.nix {
+        rofi-power-menu = pkgs.callPackage ./packages/rofi-power-menu.nix {
           inherit system;
         };
-        ss = pkgs.callPackage ./Packages/ss.nix {
+        ss = pkgs.callPackage ./packages/ss.nix {
           inherit system;
         };
-        tmux_dev = pkgs.callPackage ./Packages/tmux_dev.nix {
+        tmux_dev = pkgs.callPackage ./packages/tmux_dev.nix {
           inherit system;
         };
-        tmux_nix = pkgs.callPackage ./Packages/tmux_nix.nix {
+        tmux_nix = pkgs.callPackage ./packages/tmux_nix.nix {
           inherit system;
         };
-        tmux_notes = pkgs.callPackage ./Packages/tmux_notes.nix {
+        tmux_notes = pkgs.callPackage ./packages/tmux_notes.nix {
           inherit system;
         };
-        toggle-mute = pkgs.callPackage ./Packages/toggle-mute.nix {
+        toggle-mute = pkgs.callPackage ./packages/toggle-mute.nix {
           inherit system;
         };
-        waycava = pkgs.callPackage ./Packages/waycava.nix {
+        waycava = pkgs.callPackage ./packages/waycava.nix {
           inherit system;
         };
+        default = pkgs.callPackages ./packages {inherit system;};
       }
     );
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
     nixosModules = rec {
-      all = ./Modules/System;
+      all = ./modules/nixos;
       default = all;
     };
 
     homeManagerModules = rec {
-      all = import ./Modules/Home;
+      all = import ./modules/home-manager;
       default = all;
       programs = {
-        playerVol = import ./Modules/Home/programs/playerVol.nix;
-        nixvim = import ./Modules/Home/programs/nixvim;
-        zen = import ./Modules/Home/programs/zen;
-        default = import ./Modules/Home/programs;
+        playerVol = import ./modules/home-manager/programs/playerVol.nix;
+        nixvim = import ./modules/home-manager/programs/nixvim;
+        zen = import ./modules/home-manager/programs/zen;
+        default = import ./modules/home-manager/programs;
       };
-      catppuccin = import ./Modules/Home/catppuccin;
-      stylix = import ./Modules/Home/stylix;
-      hyprlandLayouts = import ./Modules/Home/wayland/windowManager/hyprland/layouts;
-      hyprLiveWallpaper = import ./Modules/Home/wayland/windowManager/hyprland/useLiveWallpaper.nix;
-      hyprPlugins = import ./Modules/Home/wayland/windowManager/hyprland/plugins;
+      catppuccin = import ./modules/home-manager/catppuccin;
+      stylix = import ./modules/home-manager/stylix;
+      hyprlandLayouts = import ./modules/home-manager/wayland/windowManager/hyprland/layouts;
+      hyprLiveWallpaper = import ./modules/home-manager/wayland/windowManager/hyprland/useLiveWallpaper.nix;
+      hyprPlugins = import ./modules/home-manager/wayland/windowManager/hyprland/plugins;
     };
   };
 }
