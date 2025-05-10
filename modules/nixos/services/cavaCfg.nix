@@ -5,13 +5,13 @@
   ...
 }: let
   cavaCfg = pkgs.callPackage ../../../packages/cavaCfg.nix {
-    red = "${config.lib.stylix.colors.base08}";
-    peach = "${config.lib.stylix.colors.base09}";
-    yellow = "${config.lib.stylix.colors.base0A}";
-    green = "${config.lib.stylix.colors.base0B}";
-    teal = "${config.lib.stylix.colors.base0C}";
-    blue = "${config.lib.stylix.colors.base0D}";
-    mauve = "${config.lib.stylix.colors.base0E}";
+    red = "#${config.lib.stylix.colors.base08}";
+    peach = "#${config.lib.stylix.colors.base09}";
+    yellow = "#${config.lib.stylix.colors.base0A}";
+    green = "#${config.lib.stylix.colors.base0B}";
+    teal = "#${config.lib.stylix.colors.base0C}";
+    blue = "#${config.lib.stylix.colors.base0D}";
+    mauve = "#${config.lib.stylix.colors.base0E}";
   };
 
   cfg = config.services.cavaCfg;
