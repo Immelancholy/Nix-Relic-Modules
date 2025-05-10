@@ -7,13 +7,13 @@
   cfg = config.services.cavaCfg;
 
   cavaCfg = pkgs.callPackage ../../../packages/cavaCfg.nix {
-    color1 = cfg.colors.color1;
-    color2 = cfg.colors.color2;
-    color3 = cfg.colors.color3;
-    color4 = cfg.colors.color4;
-    color5 = cfg.colors.color5;
-    color6 = cfg.colors.color6;
-    color7 = cfg.colors.color7;
+    color1 = "${cfg.colors.color1}";
+    color2 = "${cfg.colors.color2}";
+    color3 = "${cfg.colors.color3}";
+    color4 = "${cfg.colors.color4}";
+    color5 = "${cfg.colors.color5}";
+    color6 = "${cfg.colors.color6}";
+    color7 = "${cfg.colors.color7}";
   };
 in {
   options.services.cavaCfg = {

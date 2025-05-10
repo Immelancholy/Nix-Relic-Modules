@@ -6,11 +6,11 @@
 }: let
   cfg = config.services.neo-color;
   neo-color = pkgs.callPackage ../../../packages/neo-color.nix {
-    color1 = cfg.colors.color1;
-    color2 = cfg.colors.color2;
-    color3 = cfg.colors.color3;
-    color4 = cfg.colors.color4;
-    color5 = cfg.colors.color5;
+    color1 = "${cfg.colors.color1}";
+    color2 = "${cfg.colors.color2}";
+    color3 = "${cfg.colors.color3}";
+    color4 = "${cfg.colors.color4}";
+    color5 = "${cfg.colors.color5}";
   };
 in {
   options.services.neo-color = {
