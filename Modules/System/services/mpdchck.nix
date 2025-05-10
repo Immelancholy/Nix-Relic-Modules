@@ -1,4 +1,4 @@
-inputs: {
+{
   pkgs,
   lib,
   config,
@@ -7,7 +7,7 @@ inputs: {
 with lib; let
   inherit (pkgs.stdenv.hostPlatform) system;
   cfg = config.services.mpdchck;
-  mpdchck = inputs.self.packages.${system}.mpdchck;
+  mpdchck = pkgs.callPackages ../../../Packages/mpdchck.nix;
 in {
   options.services.mpdchck = {
     enable = mkEnableOption "Enable mpdchck service";
@@ -32,7 +32,7 @@ in {
         pkgs.pipewire
         pkgs.mpc
       ];
-      script = ''${mpdchck}'';
+      script = ''${mpdchck}/bin/mpdchck.sh'';
       serviceConfig = {
         Restart = "always";
       };
