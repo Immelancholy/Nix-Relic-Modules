@@ -28,10 +28,6 @@ in {
       name = "mpdchck";
       after = ["mpd.service"];
       wantedBy = ["default.target"];
-      # path = [
-      #   pkgs.pipewire
-      #   pkgs.mpc
-      # ];
       script = ''${mpdchck}/bin/mpdchck.sh'';
       serviceConfig = {
         Restart = "always";

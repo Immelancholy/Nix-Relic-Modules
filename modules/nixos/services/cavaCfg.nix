@@ -21,7 +21,7 @@ in {
   config = lib.mkIf cfg.enable {
     systemd.user.services."cavaCfg" = {
       enable = true;
-      name = "Neo Color";
+      name = "Cava Cfg";
       wantedBy = ["default.target"];
       path = [
         cavaCfg

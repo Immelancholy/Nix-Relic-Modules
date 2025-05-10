@@ -4,8 +4,6 @@
   lib,
   ...
 }: let
-  colortrans = pkgs.callPackage ../../../packages/colortrans.nix {};
-
   neo-color = pkgs.callPackage ../../../packages/neo-color.nix {
     base = "${config.lib.stylix.colors.base00}";
     mantle = "${config.lib.stylix.colors.base01}";
@@ -35,9 +33,7 @@ in {
       name = "Neo Color";
       wantedBy = ["default.target"];
       path = [
-        colortrans
         neo-color
-        pkgs.gawk
       ];
       script = ''neo-color'';
     };
