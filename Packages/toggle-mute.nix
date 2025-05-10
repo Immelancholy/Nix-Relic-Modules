@@ -1,4 +1,4 @@
-{writeShellScriptBin}:
+{writeShellScriptBin, ...}:
 writeShellScriptBin "toggle-mute" ''
   MUTED=$(wpctl get-volume @DEFAULT_SOURCE@)
   MUTED=''${MUTED:13}
