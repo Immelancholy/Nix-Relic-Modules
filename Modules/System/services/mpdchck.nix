@@ -5,8 +5,9 @@
   ...
 }:
 with lib; let
+  inherit (pkgs.stdenv.hostPlatform) system;
   cfg = config.services.mpdchck;
-  mpdchck = pkgs.callPackage ../../../Packages/mpdchck.nix;
+  mpdchck = inputs.self.packages.${system}.mpdchck;
 in {
   options.services.mpdchck = {
     enable = mkEnableOption "Enable mpdchck service";
