@@ -70,6 +70,7 @@ in {
       path = [
         colortransform
         neo-color
+        pkgs.gawk
       ];
       script = ''neo-color'';
     };
