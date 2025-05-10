@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: let
   base = "${config.lib.stylix.colors.base00}";
@@ -57,15 +58,20 @@
       ''${text:11}
     EOF
   '';
+  cfg = config.services.neo-color;
 in {
-  systemd.user.services."neo-color" = {
-    enable = true;
-    name = "Neo Color";
-    wantedBy = ["default.target"];
-    path = [
-      "${colortransform}"
-      neo-color
-    ];
-    script = ''neo-color'';
+  options.services.neo-color.enable = lib.mkEnableOption "Enable neo color file generation service";
+
+  config = lib.mkIf cfg.enable {
+    systemd.user.services."neo-color" = {
+      enable = true;
+      name = "Neo Color";
+      wantedBy = ["default.target"];
+      path = [
+        "${colortransform}"
+        neo-color
+      ];
+      script = ''neo-color'';
+    };
   };
 }
