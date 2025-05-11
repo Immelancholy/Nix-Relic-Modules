@@ -42,7 +42,6 @@
         tmux_notes = pkgs.callPackage ./packages/tmux_notes.nix {};
         toggle-mute = pkgs.callPackage ./packages/toggle-mute.nix {};
         waycava = pkgs.callPackage ./packages/waycava.nix {};
-        default = import ./packages nixpkgs.legacyPackages.${system};
       }
     );
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
