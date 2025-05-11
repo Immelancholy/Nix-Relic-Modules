@@ -28,20 +28,6 @@
       default = all;
     };
 
-    homeManagerModules = rec {
-      all = import ./modules/home-manager;
-      default = all;
-      programs = {
-        playerVol = import ./modules/home-manager/programs/playerVol.nix;
-        nixvim = import ./modules/home-manager/programs/nixvim;
-        zen = import ./modules/home-manager/programs/zen;
-        default = import ./modules/home-manager/programs;
-      };
-      catppuccin = import ./modules/home-manager/catppuccin;
-      stylix = import ./modules/home-manager/stylix;
-      hyprlandLayouts = import ./modules/home-manager/wayland/windowManager/hyprland/layouts;
-      hyprLiveWallpaper = import ./modules/home-manager/wayland/windowManager/hyprland/useLiveWallpaper.nix;
-      hyprPlugins = import ./modules/home-manager/wayland/windowManager/hyprland/plugins;
-    };
+    homeManagerModules.default = import ./modules/home-manager;
   };
 }
