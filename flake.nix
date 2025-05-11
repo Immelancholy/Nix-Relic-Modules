@@ -1,16 +1,11 @@
 {
-  description = "A kitty terminal mpd album art viewer";
+  description = "Modules and packages for my Nix-Relic template.";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  }: let
-    inherit (self) outputs;
+  outputs = {nixpkgs, ...}: let
     systems = [
       "x86_64-linux"
       "aarch64-linux"
