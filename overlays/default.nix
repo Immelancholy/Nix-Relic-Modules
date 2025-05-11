@@ -1,5 +1,5 @@
 {
   nix-relic-modules = final: _prev: {
-    nrm = import ../packages final.system;
+    nrm = import ../packages final.pkgs;
   };
 }
