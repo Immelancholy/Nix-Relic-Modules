@@ -46,7 +46,7 @@
     );
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
-    overlays = import ./overlays {inherit outputs;};
+    overlays = import ./overlays;
 
     nixosModules = rec {
       all = ./modules/nixos;
