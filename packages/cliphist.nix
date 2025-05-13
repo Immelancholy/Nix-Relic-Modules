@@ -1,16 +1,17 @@
 {
   writeShellApplication,
   pkgs,
+  rofi-package ? pkgs.rofi-wayland,
+  wl-clip-package ? pkgs.wl-clipboard,
   ...
 }:
 writeShellApplication {
   name = "cliphist.sh";
   runtimeInputs = [
     pkgs.cliphist
-    pkgs.rofi-wayland
-    pkgs.wl-clipboard
+    rofi-package
+    wl-clip-package
+    pkgs.gawk
   ];
-  text = ''
-    cliphist list | rofi -dmenu | cliphist decode | wl-copy
-  '';
+  text = builtins.readFile ./Bash/cliphist.sh;
 }
