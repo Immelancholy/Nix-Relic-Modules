@@ -13,5 +13,8 @@ writeShellApplication {
     wl-clip-package
     pkgs.gawk
   ];
-  text = builtins.readFile ./Bash/cliphist.sh;
+  text = ''
+    set +o nounset
+    ${builtins.readFile ./Bash/cliphist.sh}
+  '';
 }
