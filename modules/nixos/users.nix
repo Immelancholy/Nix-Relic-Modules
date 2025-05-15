@@ -16,6 +16,36 @@ with lib; let
       inherit isNormalUser createHome;
     };
 in {
+  userOpts = {
+    name,
+    config,
+    ...
+  }: {
+    options = {
+      extraGroups = mkOption {
+        apply = groups:
+          if config.isNormalUser
+          then cfg.defaultGroups ++ groups
+          else groups;
+      };
+      isAdmin = mkOption {
+        type = types.bool;
+        default = false;
+        description = "Access to sudo";
+      };
+      home-config = mkOption {
+        description = "Extra home manager config";
+        type = types.attrs;
+        default = {};
+      };
+      config = {
+        extraGroups =
+          if config.isAdmin
+          then ["wheel"]
+          else [];
+      };
+    };
+  };
   options.nix-relic.users = {
     defaultGroups = mkOption {
       description = "Groups all users should have";
@@ -34,37 +64,7 @@ in {
     };
   };
   options.user.users = mkOption {
-    type = with types;
-      attrsOf (submodule ({
-        name,
-        config,
-        ...
-      }: {
-        options = {
-          extraGroups = mkOption {
-            apply = groups:
-              if config.isNormalUser
-              then cfg.defaultGroups ++ groups
-              else groups;
-          };
-          isAdmin = mkOption {
-            type = types.bool;
-            default = false;
-            description = "Access to sudo";
-          };
-          home-config = mkOption {
-            description = "Extra home manager config";
-            type = types.attrs;
-            default = {};
-          };
-        };
-        config = {
-          extraGroups =
-            if config.isAdmin
-            then ["wheel"]
-            else [];
-        };
-      }));
+    type = with types; attrsOf (submodule userOpts);
   };
 
   config = {
