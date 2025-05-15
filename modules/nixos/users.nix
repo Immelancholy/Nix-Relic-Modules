@@ -4,41 +4,66 @@
   ...
 }:
 with lib; let
+  cfg = config.nix-relic.users;
+  user = name: attrs @ {
+    isNormalUser ? true,
+    createHome ? true,
+    ...
+  }:
+    attrs
+    // {
+      inherit isNormalUser createHome;
+    };
   userOpts = {
     name,
     config,
     ...
   }: {
     options = {
-      userOpts = {
-        name,
-        config,
-        ...
-      }: {
-        isAdmin = mkEnableOption "Enable sudo access";
+      extraGroups = mkOption {
+        apply = groups:
+          if config.isNormalUser
+          then cfg.defaultGroups ++ groups
+          else groups;
+      };
+      isAdmin = mkEnableOption "Sudo access";
+      home-config = mkOption {
+        description = "Extra home manager configuration to be defined here";
+        type = types.attrs;
+        default = {};
       };
     };
-    config = mkMerge [
-      (mkIf config.isNormalUser {
-        extraGroups = [
-          "networkmanager"
-          "video"
-          "seat"
-        ];
-      })
-      (mkIf config.isAdmin {
-        extraGroups = [
-          "networkmanager"
-          "video"
-          "seat"
-          "wheel"
-        ];
-      })
-    ];
+    config = {
+      extraGroups =
+        if config.isAdmin
+        then ["wheel"]
+        else [];
+    };
   };
 in {
-  options.users.users = mkOption {
-    default = {};
-    type = with types; attrsOf (submodule userOpts);
+  options = {
+    nix-relic.users = {
+      defaultGroups = mkOption {
+        description = "Sane default groups";
+        type = with types; listOf str;
+        default = [
+          "networkmanager"
+          "video"
+          "seat"
+        ];
+      };
+      users = mkOption {
+        description = "Users with sane defaults";
+        type = with types; attrsOf attrs;
+        apply = mapAttrs user;
+        default = [];
+      };
+    };
+    users.users = mkOption {
+      types = with types; attrsOf (submodule userOpts);
+    };
+  };
+  config.users = {
+    users = cfg.users;
   };
 }
