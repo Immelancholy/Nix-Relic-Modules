@@ -3,28 +3,33 @@
   lib,
   ...
 }:
-with lib; {
-  options.nix-relic.home-manager.config = mkOption {
-    description = ''
-      Global Home Manager configuration.
-      It can be specified the same way as in `home-manager.users.<name>`
-      and it applies to all regular users (`isNormalUser` attribute is set).
+with lib; let
+  cfg = config.nix-relic.home-manager;
+in {
+  options.nix-relic.home-manager = {
+    useHostNameUserNameHome = mkEnableOption "use format ./${config.networking.hostName}/users/${user}/home as an import for extra user configuration";
+    config = mkOption {
+      description = ''
+        Global Home Manager configuration.
+        It can be specified the same way as in `home-manager.users.<name>`
+        and it applies to all regular users (`isNormalUser` attribute is set).
 
-      There are some optional argument available to the global home manager
-      modules, namely:
+        There are some optional argument available to the global home manager
+        modules, namely:
 
-      - *user*: The current user who the configuration is generated for\
-      - *nixosConfig*: The global nixos configuration\
+        - *user*: The current user who the configuration is generated for\
+        - *nixosConfig*: The global nixos configuration\
 
-      Note that all `profiles` set in the global configuration is inherited
-      by home manager and can be explicitly disabled.
-    '';
-    type = mkOptionType {
-      name = "attribute set or function";
-      merge = const (map (x: x.value));
-      check = x: isAttrs x || isFunction x;
+        Note that all `profiles` set in the global configuration is inherited
+        by home manager and can be explicitly disabled.
+      '';
+      type = mkOptionType {
+        name = "attribute set or function";
+        merge = const (map (x: x.value));
+        check = x: isAttrs x || isFunction x;
+      };
+      default = {};
     };
-    default = {};
   };
 
   config = let
@@ -44,7 +49,16 @@ with lib; {
         };
         home.username = "${user}";
         home.homeDirectory = "/home/${user}";
-        imports = nixosConfig.nix-relic.home-manager.config;
+        imports =
+          if cfg.useHostNameUserNameHome
+          then
+            nixosConfig.nix-relic.home-manager.config
+            ++ [
+              ./${config.networking.hostName}/users/${user}/home
+            ]
+          else
+            nixosConfig.nix-relic.home-manager.config
+            ++ [];
       }
       user.home-config);
   in {
