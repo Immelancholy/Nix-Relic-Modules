@@ -64,6 +64,8 @@ in {
   };
 
   config = {
-    users = cfg.users;
+    users = {
+      users = cfg.users;
+    };
   };
 }
