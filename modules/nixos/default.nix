@@ -6,5 +6,6 @@
     ./services
     ./locale.nix
     ./users.nix
+    ./home-manager.nix
   ];
 }
