@@ -28,14 +28,14 @@ in {
     };
     users = mkOption {
       description = "Users with sane defaults";
-      type = with types; loaOf attrs;
+      type = with types; attrsOf attrs;
       apply = mapAttrs user;
       default = [];
     };
   };
   options.user.users = mkOption {
     type = with types;
-      loaOf (submodule ({
+      attrsOf (submodule ({
         name,
         config,
         ...
@@ -47,7 +47,11 @@ in {
               then cfg.defaultGroups ++ groups
               else groups;
           };
-          isAdmin = mkEnableOption "Access to sudo";
+          isAdmin = mkOption {
+            type = types.bool;
+            default = false;
+            description = "Access to sudo";
+          };
           home-config = mkOption {
             description = "Extra home manager config";
             type = types.attrs;
