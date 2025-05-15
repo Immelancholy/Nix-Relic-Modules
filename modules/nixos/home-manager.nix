@@ -5,21 +5,10 @@
   ...
 }:
 with lib; {
-  options.nix-relic.home-manager = {
-    config = mkOption {
-      type = mkOptionType {
-        name = "attribute set or function";
-        merge = const (map (x: x.value));
-        check = x: isAttrs x || isFunction x;
-      };
-      default = {};
-    };
-  };
-
   config = let
     nixosConfig = config;
     makeHM = name: _user: let
-      user = cconfig.users.users.${name};
+      user = config.users.users.${name};
     in ({
       config,
       options,
@@ -33,8 +22,6 @@ with lib; {
 
         home.username = "${user}";
         home.homeDirectory = "/home/${user}";
-
-        imports = nixosConfig.nix-relic.home-manager.config;
       }
       user.home-config);
   in {
