@@ -38,12 +38,12 @@ in {
         type = types.attrs;
         default = {};
       };
-      config = {
-        extraGroups =
-          if config.isAdmin
-          then ["wheel"]
-          else [];
-      };
+    };
+    config = {
+      extraGroups =
+        if config.isAdmin
+        then ["wheel"]
+        else [];
     };
   };
   options.nix-relic.users = {
