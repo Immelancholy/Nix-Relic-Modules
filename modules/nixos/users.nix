@@ -59,7 +59,7 @@ in {
         default = [];
       };
     };
-    users = mkOption {
+    users.users = mkOption {
       type = with types; attrsOf (submodule userOpts);
     };
   };
