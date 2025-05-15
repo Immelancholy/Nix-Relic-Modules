@@ -5,14 +5,10 @@
 }:
 with lib; let
   cfg = config.nix-relic.users;
-  user = name: attrs @ {
-    isNormalUser ? true,
-    createHome ? true,
-    ...
-  }:
+  user = name: attrs @ {isNormalUser ? false, ...}:
     attrs
     // {
-      inherit isNormalUser createHome;
+      inherit isNormalUser;
     };
   userOpts = {
     name,
