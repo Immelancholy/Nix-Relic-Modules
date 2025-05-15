@@ -20,8 +20,8 @@ with lib; {
           inherit nixosConfig user;
         };
 
-        home.username = "${user}";
-        home.homeDirectory = "/home/${user}";
+        home.username = "${name}";
+        home.homeDirectory = "/home/${name}";
       }
       user.home-config);
   in {
