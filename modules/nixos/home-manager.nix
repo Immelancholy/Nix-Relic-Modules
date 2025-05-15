@@ -19,13 +19,13 @@ with lib; {
       Note that all `profiles` set in the global configuration is inherited
       by home manager and can be explicitly disabled.
     '';
+    type = mkOptionType {
+      name = "attribute set or function";
+      merge = const (map (x: x.value));
+      check = x: isAttrs || isFunction x;
+    };
+    default = {};
   };
-  type = mkOptionType {
-    name = "attribute set or function";
-    merge = const (map (x: x.value));
-    check = x: isAttrs || isFunction x;
-  };
-  default = {};
 
   config = let
     nixosConfig = config;
