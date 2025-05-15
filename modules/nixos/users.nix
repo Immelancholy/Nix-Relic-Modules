@@ -50,7 +50,7 @@ in {
           isAdmin = mkEnableOption "Access to sudo";
           home-config = mkOption {
             description = "Extra home manager config";
-            type = types.atts;
+            type = types.attrs;
             default = {};
           };
         };
