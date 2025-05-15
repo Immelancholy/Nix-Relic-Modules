@@ -22,7 +22,7 @@ with lib; {
     type = mkOptionType {
       name = "attribute set or function";
       merge = const (map (x: x.value));
-      check = x: isAttrs || isFunction x;
+      check = x: isAttrs x || isFunction x;
     };
     default = {};
   };
@@ -42,8 +42,8 @@ with lib; {
         _module.args = {
           inherit nixosConfig user;
         };
-        home.username = "${name}";
-        home.homeDirectory = "/home/${name}";
+        home.username = "${user}";
+        home.homeDirectory = "/home/${user}";
         imports = nixosConfig.nix-relic.home-manager.config;
       }
       user.home-config);
