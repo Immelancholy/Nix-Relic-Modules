@@ -5,7 +5,7 @@
 }:
 with lib; let
   cfg = config.nix-relic.users;
-  user = name: attrs @ {isNormalUser ? false, ...}:
+  user = name: attrs @ {isNormalUser ? true, ...}:
     attrs
     // {
       inherit isNormalUser;
