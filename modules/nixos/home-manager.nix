@@ -6,7 +6,6 @@
 }:
 with lib; {
   options.nix-relic.home-manager = {
-    useHostNameUserNameHomePath = mkEnableOption "Use ./\${config.networking.hostName}/users/\${config.nix-relic.home-manager.config.home.username}/home.nix\n as import for home-manager";
     config = mkOption {
       type = mkOptionType {
         name = "attribute set or function";
@@ -35,14 +34,7 @@ with lib; {
         home.username = "${user}";
         home.homeDirectory = "/home/${user}";
 
-        imports =
-          if nixosConfig.nix-relic.home-manager.useHostNameUserNameHomePath
-          then
-            nixosConfig.nix-relic.home-manager.config
-            ++ [
-              ./${nixosConfig.networking.hostName}/users/${user}/home.nix
-            ]
-          else nixosConfig.nix-relic.home-manager.config;
+        imports = nixosConfig.nix-relic.home-manager.config;
       }
       user.home-config);
   in {
