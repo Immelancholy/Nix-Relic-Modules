@@ -17,7 +17,7 @@ with lib; let
     };
 in {
   options.nix-relic.users = {
-    defaultGroups = mkOptions {
+    defaultGroups = mkOption {
       description = "Groups all users should have";
       type = with types; listOf str;
       default = [
