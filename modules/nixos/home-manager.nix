@@ -3,9 +3,7 @@
   lib,
   ...
 }:
-with lib; let
-  cfg = nixosConfig.nix-relic.home-manager;
-in {
+with lib; {
   options.nix-relic.home-manager = {
     useHostNameUserNameHome = mkEnableOption "use format ./${config.networking.hostName}/users/${user}/home as an import for extra user configuration";
     config = mkOption {
@@ -33,6 +31,7 @@ in {
   };
 
   config = let
+    nixosConfig = config;
     makeHM = name: _user: let
       user = config.users.users.${name};
     in ({
@@ -49,7 +48,7 @@ in {
         home.username = "${user}";
         home.homeDirectory = "/home/${user}";
         imports =
-          if cfg.useHostNameUserNameHome
+          if nixosConfig.nix-relic.home-manager.useHostNameUserNameHome
           then
             nixosConfig.nix-relic.home-manager.config
             ++ [
