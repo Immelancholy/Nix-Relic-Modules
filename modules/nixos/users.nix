@@ -41,7 +41,7 @@ in {
         ...
       }: {
         options = {
-          extraGroups = mkOptions {
+          extraGroups = mkOption {
             apply = groups:
               if config.isNormalUser
               then cfg.defaultGroups ++ groups
