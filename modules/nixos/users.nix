@@ -29,8 +29,7 @@ in {
     users = mkOption {
       description = "Users with sane defaults";
       type = with types; attrsOf attrs;
-      apply = mapAttrs user;
-      default = [];
+      default = {};
     };
   };
   options.users.users = mkOption {
