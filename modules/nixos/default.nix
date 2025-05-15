@@ -5,6 +5,7 @@
     ./programs
     ./services
     ./locale.nix
-    ./users
+    ./users.nix
+    ./home-manager.nix
   ];
 }
