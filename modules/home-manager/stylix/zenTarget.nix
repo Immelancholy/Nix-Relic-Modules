@@ -66,7 +66,7 @@ in {
         }
 
         #TabsToolbar {
-          background-color: ${base} !important;
+          background-color: transparent !important;
         }
 
         #urlbar-background {
