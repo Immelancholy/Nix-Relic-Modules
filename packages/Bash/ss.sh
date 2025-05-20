@@ -67,7 +67,7 @@ case "$1" in
   hyprshot -m region -o $temp_dir -f "$temp_name"
   sleep 1
   swappy -f $temp_screenshot        ;;
--af) # frozen screen, drag to manually snip an area
+-f) # frozen screen, drag to manually snip an area
   hyprshot -z -m region -o $temp_dir -f "$temp_name"
   sleep 1
   swappy -f $temp_screenshot        ;;
