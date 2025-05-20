@@ -70,7 +70,7 @@ in {
         }
 
         #urlbar-background {
-          background-color: ${base} !important;
+          background-color: transparent !important;
         }
 
         .content-shortcuts {
