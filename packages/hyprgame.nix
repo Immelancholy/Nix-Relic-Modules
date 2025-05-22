@@ -29,11 +29,13 @@ writeShellScriptBin "hyprgame" ''
           hyprctl 'keyword windowrule opaque,class:(.*)' # ensure all windows are opaque
           pkill mpvpaper
           systemctl stop --user mpdchck
+          ${extraKills}
           exit
   else
           hyprctl reload config-only -q
           uwsm app -- mpvpaper -f -p -o "--loop hwdec=auto --no-audio" '*' ${wallpaper}
           systemctl start --user mpdchck
+          ${extraLaunch}
           exit
   fi
 ''
