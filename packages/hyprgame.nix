@@ -1,9 +1,8 @@
 {
   writeShellScriptBin,
-  player ? "",
-  pclass ? "",
   wallpaper ? "",
-  term ? "uwsm app -- ghostty",
+  extraKills ? '''',
+  extraLaunch ? '''',
 }:
 writeShellScriptBin "hyprgame" ''
   HYPRGAMEMODE=$(hyprctl getoption animations:enabled | sed -n '1p' | awk '{print $2}')
@@ -28,24 +27,13 @@ writeShellScriptBin "hyprgame" ''
           keyword layerrule noanim,rofi
           "
           hyprctl 'keyword windowrule opaque,class:(.*)' # ensure all windows are opaque
-          hyprctl dispatch signalwindow class:neo,9
-          hyprctl dispatch signalwindow class:cava,9
-          hyprctl dispatch signalwindow class:btop,9
-          hyprctl dispatch signalwindow class:${pclass},9
-          hyprctl dispatch signalwindow class:fastfetch,9
           pkill mpvpaper
           systemctl stop --user mpdchck
-          hyprctl dispatch exec '[workspace 1 silent; float; size 1118 710; move 401 145] ${player}'
           exit
   else
-          hyprctl dispatch signalwindow class:${pclass},9
           hyprctl reload config-only -q
           uwsm app -- mpvpaper -f -p -o "--loop hwdec=auto --no-audio" '*' ${wallpaper}
           systemctl start --user mpdchck
-          hyprctl dispatch exec '[workspace 1 silent; float; size 858 559; move 640 42] ${player}'
-          hyprctl dispatch exec '[workspace 1 silent; float; size 858 462; move 640 609] ${term} cava.sh'
-          hyprctl dispatch exec '[workspace 1 silent; float; size 620 637; move 10 433] ${term} btop.sh'
-          hyprctl dispatch exec '[workspace 1 silent; float; size 402 1030; move 1508 42] ${term} neo.sh'
-          hyprctl dispatch exec '[workspace 1 silent; float; size 620 383; move 10 42] env class="fastfetch" ${term}"'
+          exit
   fi
 ''
