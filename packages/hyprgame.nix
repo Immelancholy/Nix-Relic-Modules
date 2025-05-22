@@ -3,6 +3,7 @@
   player ? "",
   pclass ? "",
   wallpaper ? "",
+  term ? "uwsm app -- ghostty",
 }:
 writeShellScriptBin "hyprgame" ''
   HYPRGAMEMODE=$(hyprctl getoption animations:enabled | sed -n '1p' | awk '{print $2}')
@@ -42,9 +43,9 @@ writeShellScriptBin "hyprgame" ''
           uwsm app -- mpvpaper -f -p -o "--loop hwdec=auto --no-audio" '*' ${wallpaper}
           systemctl start --user mpdchck
           hyprctl dispatch exec '[workspace 1 silent; float; size 858 559; move 640 42] ${player}'
-          hyprctl dispatch exec '[workspace 1 silent; float; size 858 462; move 640 609] uwsm app -- kitty --class "cava" cava.sh'
-          hyprctl dispatch exec '[workspace 1 silent; float; size 620 637; move 10 433] uwsm app -- kitty --class "btop" btop.sh'
-          hyprctl dispatch exec '[workspace 1 silent; float; size 402 1030; move 1508 42] uwsm app -- kitty --class "neo" neo.sh'
-          hyprctl dispatch exec '[workspace 1 silent; float; size 620 383; move 10 42] uwsm app -- kitty --class "fastfetch" kitty @ launch --type overlay --env class="fastfetch"'
+          hyprctl dispatch exec '[workspace 1 silent; float; size 858 462; move 640 609] ${term} cava.sh'
+          hyprctl dispatch exec '[workspace 1 silent; float; size 620 637; move 10 433] ${term} btop.sh'
+          hyprctl dispatch exec '[workspace 1 silent; float; size 402 1030; move 1508 42] ${term} neo.sh'
+          hyprctl dispatch exec '[workspace 1 silent; float; size 620 383; move 10 42] env class="fastfetch" ${term}"'
   fi
 ''
