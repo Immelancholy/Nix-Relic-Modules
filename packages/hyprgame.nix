@@ -9,33 +9,33 @@ writeShellScriptBin "hyprgame" ''
 
   # Hyprland performance
   if [ "$HYPRGAMEMODE" = 1 ]; then
-          hyprctl -q --batch "\
-          keyword animations:enabled 0;\
-          keyword decoration:shadow:enabled 0;\
-          keyword decoration:shadow:xray 1;\
-          keyword decoration:blur:enabled 0;\
-          keyword general:gaps_in 0;\
-          keyword general:gaps_out 0;\
-          keyword general:border_size 1;\
-          keyword decoration:rounding 0 ;\
-          keyword decoration:active_opacity 1 ;\
-          keyword decoration:inactive_opacity 1 ;\
-          keyword decoration:fullscreen_opacity 1 ;\
-          keyword decoration:fullscreen_opacity 1 ;\
-          keyword layerrule noanim,waybar ;\
-          keyword layerrule noanim,mpvpaper ;\
-          keyword layerrule noanim,rofi
-          "
-          hyprctl 'keyword windowrule opaque,class:(.*)' # ensure all windows are opaque
-          pkill mpvpaper
-          systemctl stop --user mpdchck
-          ${extraKills}
-          exit
+    hyprctl -q --batch "\
+    keyword animations:enabled 0;\
+    keyword decoration:shadow:enabled 0;\
+    keyword decoration:shadow:xray 1;\
+    keyword decoration:blur:enabled 0;\
+    keyword general:gaps_in 0;\
+    keyword general:gaps_out 0;\
+    keyword general:border_size 1;\
+    keyword decoration:rounding 0 ;\
+    keyword decoration:active_opacity 1 ;\
+    keyword decoration:inactive_opacity 1 ;\
+    keyword decoration:fullscreen_opacity 1 ;\
+    keyword decoration:fullscreen_opacity 1 ;\
+    keyword layerrule noanim,waybar ;\
+    keyword layerrule noanim,mpvpaper ;\
+    keyword layerrule noanim,rofi
+    "
+    hyprctl 'keyword windowrule opaque,class:(.*)' # ensure all windows are opaque
+    pkill mpvpaper
+    systemctl stop --user mpdchck
+    ${extraKills}
+    exit
   else
-          hyprctl reload config-only -q
-          uwsm app -- mpvpaper -f -p -o "--loop hwdec=auto --no-audio" '*' ${wallpaper}
-          systemctl start --user mpdchck
-          ${extraLaunch}
-          exit
+    hyprctl reload config-only -q
+    uwsm app -- mpvpaper -f -p -o "--loop hwdec=auto --no-audio" '*' ${wallpaper}
+    systemctl start --user mpdchck
+    ${extraLaunch}
+    exit
   fi
 ''
