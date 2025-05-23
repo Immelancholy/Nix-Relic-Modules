@@ -10,7 +10,7 @@ writeShellScriptBin "tmusic" ''
   done
   tmux new -d -s "$sesh" "inori"
 
-  tmux set -g status off
+  tmux set status off
 
   tmux splitw -h -p 60 "artis"
 
