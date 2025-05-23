@@ -18,6 +18,7 @@ pkgs: {
   tmux_dev = pkgs.callPackage ./tmux_dev.nix {};
   tmux_nix = pkgs.callPackage ./tmux_nix.nix {};
   tmux_notes = pkgs.callPackage ./tmux_notes.nix {};
+  tmux_music = pkgs.callPackage ./tmux_music.nix {};
   toggle-mute = pkgs.callPackage ./toggle-mute.nix {};
   waycava = pkgs.callPackage ./waycava.nix {};
 }
