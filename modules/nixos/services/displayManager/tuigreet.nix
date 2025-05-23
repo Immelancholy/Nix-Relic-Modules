@@ -11,7 +11,7 @@ in {
     enable = mkOption {
       type = types.bool;
       default = false;
-      description = ''Use sddm as display manager'';
+      description = ''Use TuiGreet as display manager'';
     };
   };
   config = mkIf cfg.enable {
