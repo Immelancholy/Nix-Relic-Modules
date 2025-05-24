@@ -20,7 +20,7 @@ in {
     };
     cmd = mkOption {
       type = types.str;
-      default = ''uwsm app -- ghostty --class=mpd.ghostty.screen1 -e tmusic'';
+      default = ''uwsm app -- ghostty --class=mpd.ghostty.screen1 -e tmusic -c "-f kitty"'';
       description = "Launch command for music player";
     };
     class = mkOption {
