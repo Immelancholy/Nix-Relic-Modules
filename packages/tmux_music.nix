@@ -12,7 +12,7 @@ writeShellScriptBin "tmusic" ''
 
   tmux set status off
 
-  tmux splitw -h -p 60 "artis"
+  tmux splitw -h -p 60 "artis" "$@"
 
   tmux select-pane -t 1
 
