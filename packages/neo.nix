@@ -7,13 +7,10 @@ writeShellApplication {
   name = "neo.sh";
 
   runtimeInputs = [
-    pkgs.kitty
     pkgs.neo
   ];
 
   text = ''
-    kitty @ set-spacing padding=0
-    neo -a -S 20 -d 1 -f 144 -C "$XDG_CONFIG_HOME"/neo/colors -b 1 -m "Welcome, ''${USER^}." --lingerms=1,1 --rippct=0 "$@"
-    kitty @ set-spacing padding=default
+    neo -a -S 20 -d 1 -f $FRAMERATE -C "$XDG_CONFIG_HOME"/neo/colors -b 1 -m "Welcome, ''${USER^}." --lingerms=1,1 --rippct=0 "$@"
   '';
 }
