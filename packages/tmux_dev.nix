@@ -14,7 +14,7 @@ writeShellScriptBin "tdev" ''
 
   tmux select-window -t ^
 
-  tmux send-keys "y" C-m
+  tmux send-keys "nvim" C-m
 
   tmux attach-session -t $sesh
 ''
