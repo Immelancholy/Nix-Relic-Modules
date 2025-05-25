@@ -249,7 +249,7 @@ in {
         plugins = [
           inputs.hy3.packages.${pkgs.system}.hy3
         ];
-        permission = [
+        settings.permission = [
           "${inputs.hy3.packages.${pkgs.system}.hy3}/lib/libhy3.so, plugin, allow"
         ];
       })
@@ -257,7 +257,7 @@ in {
         plugins = [
           pkgs.hyprlandPlugins.hy3
         ];
-        permission = [
+        settings.permission = [
           "${pkg.hyprlandPlugins.hy3}/lib/libhy3.so, plugin, allow"
         ];
       })

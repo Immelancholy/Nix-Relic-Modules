@@ -45,7 +45,7 @@ in {
         plugins = [
           inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
         ];
-        permission = [
+        settings.permission = [
           "${inputs.Hyprspace.packages.${pkgs.system}.Hyprspace}/lib/libHyprspace.so, plugin, allow"
         ];
       })
@@ -53,7 +53,7 @@ in {
         plugins = [
           pkgs.hyprlandPlugins.hyprspace
         ];
-        permission = [
+        settings.permission = [
           "${pkgs.hyprlandPlugins.hyprspace}/lib/libHyprspace.so, plugin, allow"
         ];
       })
