@@ -13,6 +13,7 @@ pkgs: {
   playerVolDefault_Sink = pkgs.callPackage ./playerVolDefault_Sink.nix {};
   rofi-power-menu = pkgs.callPackage ./rofi-power-menu.nix {};
   ss = pkgs.callPackage ./ss.nix {};
+  systemd-restarts = pkgs.callPackage ./systemd-restarts.nix {};
   tmux_dev = pkgs.callPackage ./tmux_dev.nix {};
   tmux_nix = pkgs.callPackage ./tmux_nix.nix {};
   tmux_notes = pkgs.callPackage ./tmux_notes.nix {};
