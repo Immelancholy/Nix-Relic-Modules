@@ -45,10 +45,16 @@ in {
         plugins = [
           inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
         ];
+        permission = [
+          "${inputs.Hyprspace.packages.${pkgs.system}.Hyprspace}/lib/libHyprspace.so, plugin, allow"
+        ];
       })
       (mkIf (! cfg.usingFlake) {
         plugins = [
           pkgs.hyprlandPlugins.hyprspace
+        ];
+        permission = [
+          "${pkgs.hyprlandPlugins.hyprspace}/lib/libHyprspace.so, plugin, allow"
         ];
       })
     ];
