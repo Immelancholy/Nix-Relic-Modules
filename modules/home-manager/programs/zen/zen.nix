@@ -56,5 +56,8 @@ in {
       associations.added = associations;
       defaultApplications = associations;
     };
+    home.sessionVariables = mkIf (cfg.enable && cfg.defaultBrowser) {
+      BROWSER = "zen";
+    };
   };
 }
