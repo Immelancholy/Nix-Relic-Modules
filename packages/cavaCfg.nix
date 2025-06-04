@@ -22,7 +22,7 @@ writeShellScriptBin "cavaCfg" ''
   fi
 
   if [ ! -d "$cavaDir" ]; then
-    echo "Making Neo Directory"
+    echo "Making cava Directory"
     mkdir -p "$cavaDir"
   fi
 
