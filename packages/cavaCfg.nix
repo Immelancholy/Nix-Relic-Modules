@@ -8,16 +8,22 @@
   color5 ? "",
   color6 ? "",
   color7 ? "",
+  cavaDir ? "$HOME/.config/cava",
   ...
 }:
 writeShellScriptBin "cavaCfg" ''
-
-  cavaConfigFile=$HOME/.config/cava/vcConfig
+  cavaDir="${cavaDir}"
+  cavaConfigFile="$cavaDir/vcConfig"
   id=$(${pkgs.wireplumber}/bin/wpctl status | grep "virtual_cable_in" | ${pkgs.gawk}/bin/awk '{print $2}' | grep -m1 "" | cut -f1 -d ".")
   serial=$(${pkgs.wireplumber}/bin/wpctl inspect "''${id}" | sed -n 's/.*object.serial = //p')
   reduce=$((FRAMERATE / 2))
   if (( $reduce > 90 )); then
     reduce=90
+  fi
+
+  if [ ! -d "$cavaDir" ]; then
+    echo "Making Neo Directory"
+    mkdir -p "$cavaDir"
   fi
 
   cat >"$cavaConfigFile" <<EOF
