@@ -37,6 +37,7 @@ post_cmd() {
 }
 
 confDir="${confDir:-$HOME/.config}"
+XDG_SCREENSHOTS_DIR="${XDG_SCREENSHOTS_DIR:-$HOME/Pictures/Screenshots}"
 save_dir="${XDG_SCREENSHOTS_DIR}"
 mkdir -p "$save_dir"
 save_file=$(date +'%y%m%d_%Hh%Mm%Ss_screenshot.png')
