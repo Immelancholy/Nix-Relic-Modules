@@ -18,7 +18,6 @@ in {
     environment.sessionVariables = {
       DISPLAY_MANAGER = "tuiGreet";
     };
-    security.pam.services.tuiGreet.enableGnomeKeyring = true;
     security.pam.services.greetd.enableGnomeKeyring = true;
     services.greetd = {
       enable = true;
