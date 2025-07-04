@@ -1,5 +1,7 @@
 pkgs: {
   brightness = pkgs.callPackage ./brightness.nix {};
+  btop = pkgs.callPackage ./btop.nix {};
+  cava = pkgs.callPackage ./cava.nix {};
   cavaCfg = pkgs.callPackage ./cavaCfg.nix {};
   checkshell = pkgs.callPackage ./checkshell.nix {};
   cliphist = pkgs.callPackage ./cliphist.nix {};
