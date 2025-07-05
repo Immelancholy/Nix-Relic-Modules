@@ -181,7 +181,7 @@ in {
           bind = Shift+Alt, Up, hy3:movewindow, u
           bind = Shift+Alt, Left, hy3:movewindow, l
 
-          bind = Shift, R, submap, resize
+          bind = $mods, R, submap, resize
           submap = resize
           binde = , Right, resizeactive, 30 0
           binde = , Left, resizeactive, 30 0
@@ -214,7 +214,7 @@ in {
           bind = , escape, submap, manage
           submap = manage
 
-          bind = , R, submap, resizeTiled
+          bind = $mod, R, submap, resizeTiled
           submap = resizeTiled
           binde = , Left, resizeactive, 1 0
           binde = , Right, resizeactive, -1 0
