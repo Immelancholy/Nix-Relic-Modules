@@ -25,7 +25,7 @@ in {
     enable = config.lib.stylix.mkEnableTarget "Theme zen" true;
   };
   config = lib.mkIf (config.stylix.enable && config.stylix.targets.zen.enable) {
-    home.file.".zen/${user}.Default/chrome/userChrome.css".text = ''
+    home.file.".zen/${user}.Default/chrome/zen-themes/stylix/userChrome.css".text = ''
       @media (prefers-color-scheme: dark) {
 
         :root {
@@ -136,7 +136,7 @@ in {
       }
 
     '';
-    home.file.".zen/${user}.Default/chrome/userContent.css".text = ''
+    home.file.".zen/${user}.Default/chrome/zen-themes/stylix/userContent.css".text = ''
       @media (prefers-color-scheme: dark) {
 
         /* Common variables affecting all pages */
@@ -295,7 +295,7 @@ in {
       }
 
     '';
-    home.file.".zen/${user}.Default/chrome/zen-logo-mocha.svg" = {
+    home.file.".zen/${user}.Default/chrome/zen-themes/stylix/zen-logo-mocha.svg" = {
       source = "${inputs.catppuccinZen}/themes/Mocha/Mauve/zen-logo-mocha.svg";
     };
   };
