@@ -108,6 +108,10 @@ in {
           bind = , Up, hy3:movefocus, u, once
           bind = , Right, hy3:movefocus, r, once
           bind = , P, pin, active
+          bind = , R, hy3:changegroup, opposite
+          bind = , D, hy3:makegroup, h
+          bind = , S, hy3:makegroup, v
+          bind = , Z, hy3:makegroup, tab
           bindm = $mod, mouse:272, movewindow
           bindm = $mod, mouse:273, resizewindow
 
