@@ -2,7 +2,7 @@
 writeShellApplication {
   name = "checkshell.sh";
   text = ''
-    shell=$($SHELL --version | cut -d ' ' -f 1)
+    shell=$($SHELL --version)
     shell=''${shell^}
     echo "$shell"
   '';
