@@ -39,10 +39,10 @@ in {
       wayland.windowManager.hyprland.settings = {
         "$player" = "${cfg.name}";
         exec-once = [
-          ''[workspace 1 silent; float; size 858 559; move 640 42] ${cfg.cmd}''
+          ''[workspace 1 silent; float; size 888 559; move 610 42] ${cfg.cmd}''
         ];
         bind = [
-          ''$mods, U, exec, [workspace 1 silent; float; size 858 559; move 640 42] ${cfg.cmd}''
+          ''$mods, U, exec, [workspace 1 silent; float; size 888 559; move 610 42] ${cfg.cmd}''
         ];
       };
     })
