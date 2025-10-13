@@ -22,4 +22,5 @@ pkgs: {
   tmux_music = pkgs.callPackage ./tmux_music.nix {};
   toggle-mute = pkgs.callPackage ./toggle-mute.nix {};
   waycava = pkgs.callPackage ./waycava.nix {};
+  satty = pkgs.callPackage ./satty.nix {};
 }
