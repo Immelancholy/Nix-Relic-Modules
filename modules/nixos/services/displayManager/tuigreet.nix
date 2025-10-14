@@ -23,7 +23,7 @@ in {
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r";
+          command = "${pkgs.tuigreet}/bin/tuigreet -t -r";
           user = "greeter";
         };
       };
