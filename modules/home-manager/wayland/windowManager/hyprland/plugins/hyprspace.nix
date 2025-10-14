@@ -34,8 +34,8 @@ in {
               switchOnDrop = true;
               affectStrut = false;
 
-              workspaceActiveBorder = "rgba($mauveff)";
-              workspaceInactiveBorder = "rgba($lavendercc)";
+              # workspaceActiveBorder = "rgba($mauveff)";
+              # workspaceInactiveBorder = "rgba($lavendercc)";
               disableBlur = false;
             };
           };

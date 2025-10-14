@@ -1,19 +1,12 @@
 {
   writeShellScriptBin,
   pkgs,
-  color1 ? "",
-  color2 ? "",
-  color3 ? "",
-  color4 ? "",
-  color5 ? "",
-  color6 ? "",
-  color7 ? "",
   cavaDir ? "$HOME/.config/cava",
   ...
 }:
 writeShellScriptBin "cavaCfg" ''
   cavaDir="${cavaDir}"
-  cavaConfigFile="$cavaDir/vcConfig"
+  cavaConfigFile="$cavaDir/config"
   id=$(${pkgs.wireplumber}/bin/wpctl status | grep "virtual_cable_in" | ${pkgs.gawk}/bin/awk '{print $2}' | grep -m1 "" | cut -f1 -d ".")
   serial=$(${pkgs.wireplumber}/bin/wpctl inspect "''${id}" | sed -n 's/.*object.serial = //p')
   reduce=$((FRAMERATE / 2))
@@ -27,16 +20,6 @@ writeShellScriptBin "cavaCfg" ''
   fi
 
   cat >"$cavaConfigFile" <<EOF
-  [color]
-  gradient=1
-  gradient_color_1='${color1}'
-  gradient_color_2='${color2}'
-  gradient_color_3='${color3}'
-  gradient_color_4='${color4}'
-  gradient_color_5='${color5}'
-  gradient_color_6='${color6}'
-  gradient_color_7='${color7}'
-
   [general]
   bar_spacing=0
   bar_width=1
