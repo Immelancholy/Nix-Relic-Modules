@@ -1,6 +1,6 @@
 {
   imports = [
-    ./stylix
+    # ./stylix
     ./wayland
     ./programs
     ./catppuccin
