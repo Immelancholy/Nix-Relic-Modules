@@ -13,7 +13,7 @@
 }:
 writeShellScriptBin "cavaCfg" ''
   cavaDir="${cavaDir}"
-  cavaConfigFile="$cavaDir/vcConfig"
+  cavaConfigFile="$cavaDir/config"
   id=$(${pkgs.wireplumber}/bin/wpctl status | grep "virtual_cable_in" | ${pkgs.gawk}/bin/awk '{print $2}' | grep -m1 "" | cut -f1 -d ".")
   serial=$(${pkgs.wireplumber}/bin/wpctl inspect "''${id}" | sed -n 's/.*object.serial = //p')
   reduce=$((FRAMERATE / 2))
