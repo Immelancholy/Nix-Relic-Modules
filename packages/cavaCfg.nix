@@ -16,10 +16,10 @@ writeShellScriptBin "cavaCfg" ''
   cavaConfigFile="$cavaDir/config"
   id=$(${pkgs.wireplumber}/bin/wpctl status | grep "virtual_cable_in" | ${pkgs.gawk}/bin/awk '{print $2}' | grep -m1 "" | cut -f1 -d ".")
   serial=$(${pkgs.wireplumber}/bin/wpctl inspect "''${id}" | sed -n 's/.*object.serial = //p')
-  reduce=$((FRAMERATE / 2))
-  if (( $reduce > 90 )); then
-    reduce=90
+  if $(( FRAMERATE > 144 )); then
+    FRAMERATE=144
   fi
+  reduce=$((FRAMERATE / 2))
 
   if [ ! -d "$cavaDir" ]; then
     echo "Making cava Directory"
