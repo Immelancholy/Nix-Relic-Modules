@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  extraGamescopeArgs ? '''',
   ...
 }: let
   cfg = config.programs.steam.gamescopeSession;
@@ -13,10 +14,9 @@
         -e
         -r $FRAMERATE
         -f
+    ${extraGamescopeArgs}
     )
     steamArgs=(
-        # -tenfoot
-        # -steamdeck
         -steamos3
         -pipewire-dmabuf
         -gamepadui
