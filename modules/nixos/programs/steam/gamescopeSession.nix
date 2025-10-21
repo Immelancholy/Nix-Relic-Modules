@@ -2,7 +2,7 @@
   pkgs,
   config,
   lib,
-  extraGamescopeArgs ? '''',
+  extraGamescopeArgs ? config.programs.steam.gamescopeSession.extraGamescopeArgs,
   ...
 }: let
   cfg = config.programs.steam.gamescopeSession;
@@ -60,6 +60,12 @@
     exit 0;
   '';
 in {
+  options.programs.steam.gamescopeSession = with lib; {
+    extraGamescopeArgs = mkOption {
+      type = types.str;
+      default = "";
+    };
+  };
   config = lib.mkIf (cfg.enable && config.programs.steam.enable) {
     environment.systemPackages = [
       steam-gamescope
