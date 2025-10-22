@@ -43,7 +43,7 @@ writeShellScriptBin "cavaCfg" ''
   bar_spacing=0
   bar_width=1
   bars=0
-  framerate=''${FRAMERATE}
+  framerate=''${framerate}
   sensitivity=100
 
   [input]
