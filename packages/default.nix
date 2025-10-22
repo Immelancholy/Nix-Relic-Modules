@@ -23,4 +23,5 @@ pkgs: {
   toggle-mute = pkgs.callPackage ./toggle-mute.nix {};
   waycava = pkgs.callPackage ./waycava.nix {};
   satty = pkgs.callPackage ./satty.nix {};
+  force-hdr = pkgs.callPackage ./hdr.nix {};
 }
