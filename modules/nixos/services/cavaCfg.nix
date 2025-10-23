@@ -14,10 +14,15 @@
     color5 = "${cfg.colors.color5}";
     color6 = "${cfg.colors.color6}";
     color7 = "${cfg.colors.color7}";
+    framerate = "${cfg.framerate}";
   };
 in {
   options.services.cavaCfg = {
     enable = lib.mkEnableOption "Enable neo color file generation service";
+    framerate = lib.mkOption {
+      type = lib.types.int;
+      default = 60;
+    };
     colors = {
       color1 = lib.mkOption {
         type = lib.types.str;
