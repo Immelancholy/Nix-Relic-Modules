@@ -8,6 +8,7 @@
   color5 ? "",
   color6 ? "",
   color7 ? "",
+  framerate ? "",
   cavaDir ? "$HOME/.config/cava",
   ...
 }:
@@ -16,10 +17,10 @@ writeShellScriptBin "cavaCfg" ''
   cavaConfigFile="$cavaDir/config"
   id=$(${pkgs.wireplumber}/bin/wpctl status | grep "virtual_cable_in" | ${pkgs.gawk}/bin/awk '{print $2}' | grep -m1 "" | cut -f1 -d ".")
   serial=$(${pkgs.wireplumber}/bin/wpctl inspect "''${id}" | sed -n 's/.*object.serial = //p')
-  if $(( FRAMERATE > 144 )); then
+  if $(( ${framerate} > 144 )); then
     framerate=144
   else
-    framerate=$FRAMERATE
+    framerate=${framerate}
   fi
   reduce=$((framerate / 2))
 
