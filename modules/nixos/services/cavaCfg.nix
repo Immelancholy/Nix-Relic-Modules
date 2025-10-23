@@ -14,7 +14,7 @@
     color5 = "${cfg.colors.color5}";
     color6 = "${cfg.colors.color6}";
     color7 = "${cfg.colors.color7}";
-    framerate = "${cfg.framerate}";
+    framerate = "${builtins.toString cfg.framerate}";
   };
 in {
   options.services.cavaCfg = {
