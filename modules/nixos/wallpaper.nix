@@ -12,6 +12,11 @@ in {
       default = null;
       description = "Path to wallpaper image (Must be set)";
     };
+    polarity = mkOption {
+      type = types.str;
+      default = "dark";
+      description = "Polarity of generated colours, either dark or light";
+    };
     animatedWallpaper = {
       enable = mkEnableOption "Whether to use an animated Wallpaper";
       path = mkOption {
@@ -23,6 +28,7 @@ in {
   };
   config = {
     stylix = {
+      polarity = cfg.polarity;
       image = cfg.path;
     };
   };
