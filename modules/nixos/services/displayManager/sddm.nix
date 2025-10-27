@@ -6,6 +6,7 @@
 }:
 with lib; let
   cfg = config.displayManager.sddm;
+  abg = config.nix-relic.wallpaper;
 
   base = "#${config.lib.stylix.colors.base00}";
   surface2 = "#${config.lib.stylix.colors.base04}";
@@ -19,14 +20,6 @@ in {
       type = types.bool;
       default = false;
       description = ''Use sddm as display manager'';
-    };
-    animatedBackground = {
-      enable = mkEnableOption "Use animated background for sddm";
-      path = mkOption {
-        type = types.path;
-        default = null;
-        description = "Path to animated background";
-      };
     };
     screenWidth = mkOption {
       type = types.str;
@@ -79,8 +72,8 @@ in {
 
           BackgroundPlaceholder = "${config.stylix.image}";
           Background =
-            if cfg.animatedBackground.enable
-            then "${cfg.animatedBackground.path}"
+            if abg.animatedWallpaper.enable
+            then "${abg.animatedWallpaper.path}"
             else "${config.stylix.image}";
           BackgroundSpeed = "1.0";
           PauseBackground = "";
