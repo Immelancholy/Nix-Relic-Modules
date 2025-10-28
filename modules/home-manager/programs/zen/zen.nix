@@ -9,24 +9,31 @@ with lib; let
   cfg = config.programs.zen-browser;
   user = config.home.username;
   associations = {
-    "text/html" = ["zen.desktop"];
-    "x-scheme-handler/http" = ["zen.desktop"];
-    "x-scheme-handler/https" = ["zen.desktop"];
-    "x-scheme-handler/chrome" = ["zen.desktop"];
-    "x-scheme-handler/about" = ["zen.desktop"];
-    "x-scheme-handler/unknown" = ["zen.desktop"];
-    "default-web-browser" = ["zen.desktop"];
-    "application/xhtml+xml" = ["zen.desktop"];
-    "application/xhtml_xml" = ["zen.desktop"];
-    "application/x-extension-htm" = ["zen.desktop"];
-    "application/x-extension-html" = ["zen.desktop"];
-    "application/x-extension-shtml" = ["zen.desktop"];
-    "application/x-extension-xhtml" = ["zen.desktop"];
-    "application/x-extension-xht" = ["zen.desktop"];
+    "text/html" = ["${cfg.defaultBrowser.desktopFile}"];
+    "x-scheme-handler/http" = ["${cfg.defaultBrowser.desktopFile}"];
+    "x-scheme-handler/https" = ["${cfg.defaultBrowser.desktopFile}"];
+    "x-scheme-handler/chrome" = ["${cfg.defaultBrowser.desktopFile}"];
+    "x-scheme-handler/about" = ["${cfg.defaultBrowser.desktopFile}"];
+    "x-scheme-handler/unknown" = ["${cfg.defaultBrowser.desktopFile}"];
+    "default-web-browser" = ["${cfg.defaultBrowser.desktopFile}"];
+    "application/xhtml+xml" = ["${cfg.defaultBrowser.desktopFile}"];
+    "application/xhtml_xml" = ["${cfg.defaultBrowser.desktopFile}"];
+    "application/x-extension-htm" = ["${cfg.defaultBrowser.desktopFile}"];
+    "application/x-extension-html" = ["${cfg.defaultBrowser.desktopFile}"];
+    "application/x-extension-shtml" = ["${cfg.defaultBrowser.desktopFile}"];
+    "application/x-extension-xhtml" = ["${cfg.defaultBrowser.desktopFile}"];
+    "application/x-extension-xht" = ["${cfg.defaultBrowser.desktopFile}"];
   };
 in {
   options.programs.zen-browser = {
-    defaultBrowser = mkEnableOption "Make Zen the default browser";
+    defaultBrowser = {
+      enable = mkEnableOption "Make Zen the default browser";
+      desktopFile = mkOption {
+        type = types.str;
+        default = "zen.desktop";
+        description = "Name of zen browser desktop file";
+      };
+    };
   };
   config = mkIf cfg.enable {
     home.file = {
