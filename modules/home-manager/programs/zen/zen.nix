@@ -50,15 +50,15 @@ in {
         Version=2
       '';
     };
-    xdg.mime = mkIf (cfg.enable && cfg.defaultBrowser) {
+    xdg.mime = mkIf (cfg.enable && cfg.defaultBrowser.enable) {
       enable = true;
     };
-    xdg.mimeApps = mkIf (cfg.enable && cfg.defaultBrowser) {
+    xdg.mimeApps = mkIf (cfg.enable && cfg.defaultBrowser.enable) {
       enable = true;
       associations.added = associations;
       defaultApplications = associations;
     };
-    home.sessionVariables = mkIf (cfg.enable && cfg.defaultBrowser) {
+    home.sessionVariables = mkIf (cfg.enable && cfg.defaultBrowser.enable) {
       BROWSER = "zen";
     };
   };
