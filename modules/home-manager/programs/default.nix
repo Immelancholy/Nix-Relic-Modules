@@ -1,7 +1,7 @@
 {
   imports = [
     ./nixvim
-    ./zen
+    # ./zen
     ./playerVol.nix
   ];
 }

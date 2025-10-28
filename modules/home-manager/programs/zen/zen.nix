@@ -6,7 +6,7 @@
   ...
 }:
 with lib; let
-  cfg = config.programs.zen;
+  cfg = config.programs.zen-browser;
   user = config.home.username;
   associations = {
     "text/html" = ["zen.desktop"];
@@ -16,7 +16,6 @@ with lib; let
     "x-scheme-handler/about" = ["zen.desktop"];
     "x-scheme-handler/unknown" = ["zen.desktop"];
     "default-web-browser" = ["zen.desktop"];
-    "application/pdf" = ["zen.desktop"];
     "application/xhtml+xml" = ["zen.desktop"];
     "application/xhtml_xml" = ["zen.desktop"];
     "application/x-extension-htm" = ["zen.desktop"];
@@ -26,14 +25,10 @@ with lib; let
     "application/x-extension-xht" = ["zen.desktop"];
   };
 in {
-  options.programs.zen = {
-    enable = mkEnableOption "Enable Zen Browser";
+  options.programs.zen-browser = {
     defaultBrowser = mkEnableOption "Make Zen the default browser";
   };
   config = mkIf cfg.enable {
-    home.packages = [
-      inputs.zen-browser.packages.${pkgs.system}.default
-    ];
     home.file = {
       ".zen/profiles.ini".text = ''
         [Profile0]
