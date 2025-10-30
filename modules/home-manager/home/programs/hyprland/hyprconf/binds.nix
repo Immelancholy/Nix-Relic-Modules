@@ -7,7 +7,7 @@
     bind =
       [
         "$mod, T, exec, $term"
-        ''$mod+Alt, T, exec, $term --class "tmux" tmux''
+        ''$mods, T, exec, $term --class "tmux" tmux''
         "$mod, F, exec, $browser"
         "$mod, E, exec, $files"
         "$mod, grave, exec, $menu"
