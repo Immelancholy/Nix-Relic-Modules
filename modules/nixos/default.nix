@@ -8,5 +8,6 @@
     ./users.nix
     ./home-manager.nix
     ./wallpaper.nix
+    ./system
   ];
 }
