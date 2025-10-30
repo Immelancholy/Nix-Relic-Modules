@@ -15,6 +15,7 @@
     ./oh-my-posh.nix
     ./activationScripts
     ./fish.nix
+    ./fetch_images.nix
   ];
 
   xdg = {
