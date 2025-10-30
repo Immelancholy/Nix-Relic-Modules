@@ -11,12 +11,15 @@
       "aarch64-linux"
     ];
     forAllSystems = nixpkgs.lib.genAttrs systems;
+    overlay = final: prev: {
+      nrm = import ./packages final.pkgs;
+    };
   in {
     packages = forAllSystems (system: import ./packages nixpkgs.legacyPackages.${system});
 
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
-    overlays = import ./overlays;
+    overlays.default = overlay;
 
     nixosModules = rec {
       all = ./modules/nixos;
