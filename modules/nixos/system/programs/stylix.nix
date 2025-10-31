@@ -1,4 +1,7 @@
-{pkgs, ...}: {
+{pkgs, inputs ...}: {
+  imports = [
+    inputs.stylix.nixosModules.stylix
+  ];
   stylix = {
     homeManagerIntegration = {
       autoImport = true;

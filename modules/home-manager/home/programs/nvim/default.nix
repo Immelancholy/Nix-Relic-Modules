@@ -4,6 +4,9 @@
   lib,
   ...
 }: {
+  imports = [
+    inputs.nixvim.homeModules.nixvim
+  ];
   programs.nixvim = {
     globals.mapleader = " ";
     enableMan = true;

@@ -1,6 +1,6 @@
 {
   config,
-  pkgs,
+  inputs,
   ...
 }: let
   base = "#${config.lib.stylix.colors.base00}";
@@ -20,6 +20,9 @@
   mauve = "#${config.lib.stylix.colors.base0E}";
   flamingo = "#${config.lib.stylix.colors.base0F}";
 in {
+  imports = [
+    inputs.artis.homeManagerModules.default
+  ];
   programs.artis = {
     enable = true;
     colors = {
