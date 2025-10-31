@@ -17,6 +17,7 @@
   nixpkgs = {
     overlays = [
       outputs.overlays.modifications
+      outputs.overlays.additions
       inputs.nix-relic-modules.overlays.default
     ];
 
