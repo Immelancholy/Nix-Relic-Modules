@@ -85,11 +85,11 @@
     forAllSystems = nixpkgs.lib.genAttrs systems;
     overlay = final: prev: {
       nrm = import ./packages final.pkgs;
-      stable = import self.inputs.nixpkgs-stable {
+      stable = import inputs.nixpkgs-stable {
         system = final.system;
         config.allowUnfree = true;
       };
-      nur = self.inputs.nur.overlays.default;
+      nur = inputs.nur.overlays.default;
     };
   in {
     packages = forAllSystems (system: import ./packages nixpkgs.legacyPackages.${system});
