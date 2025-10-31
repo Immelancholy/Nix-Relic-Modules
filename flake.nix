@@ -98,8 +98,8 @@
 
     overlays.default = overlay;
 
-    nixosModules.default = import ./modules/nixos {inherit inputs outputs;};
+    nixosModules.default = import ./modules/nixos;
 
-    homeManagerModules.default = import ./modules/home-manager {inherit inputs outputs;};
+    homeManagerModules.default = import ./modules/home-manager;
   };
 }
